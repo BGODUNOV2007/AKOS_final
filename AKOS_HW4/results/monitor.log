@@ -1,0 +1,39 @@
+WATCHING M1
+SNAP seq=1 r=0 w=0 db=[2,3,5,8,13]
+PEER M1 idle ticket=0 index=0
+PROGRESS R1 done=0 quota=3
+PROGRESS R2 done=0 quota=3
+PROGRESS W1 done=0 quota=2
+SNAP_END
+EVENT 2 ONLINE M1 ticket=0 r=0 w=0 t_ms=9 connection=open
+EVENT 3 ONLINE R1 ticket=0 r=0 w=0 t_ms=42 connection=open
+EVENT 4 ONLINE R2 ticket=0 r=0 w=0 t_ms=42 connection=open
+EVENT 5 ONLINE W1 ticket=0 r=0 w=0 t_ms=42 connection=open
+EVENT 6 REQUEST R2 ticket=1 r=0 w=0 t_ms=126 index=3
+EVENT 7 READ_BEGIN R2 ticket=1 r=1 w=0 t_ms=126 index=3 old=8
+EVENT 8 REQUEST R1 ticket=2 r=1 w=0 t_ms=134 index=4
+EVENT 9 READ_BEGIN R1 ticket=2 r=2 w=0 t_ms=134 index=4 old=13
+EVENT 10 REQUEST W1 ticket=3 r=2 w=0 t_ms=148 index=0
+EVENT 11 READ_END R1 ticket=2 r=1 w=0 t_ms=390 op=1 index=4 value=13 fib=233
+EVENT 12 READ_END R2 ticket=1 r=0 w=0 t_ms=393 op=1 index=3 value=8 fib=21
+EVENT 13 WRITE_BEGIN W1 ticket=3 r=0 w=1 t_ms=393 index=0 old=2
+EVENT 14 REQUEST R2 ticket=4 r=0 w=1 t_ms=514 index=0
+EVENT 15 REQUEST R1 ticket=5 r=0 w=1 t_ms=533 index=3
+EVENT 16 WRITE_END W1 ticket=3 r=0 w=0 t_ms=583 op=1 index=0 old=2 new=18 db=[3,5,8,13,18]
+EVENT 17 READ_BEGIN R2 ticket=4 r=1 w=0 t_ms=583 index=0 old=3
+EVENT 18 READ_BEGIN R1 ticket=5 r=2 w=0 t_ms=583 index=3 old=13
+EVENT 19 REQUEST W1 ticket=6 r=2 w=0 t_ms=728 index=1
+EVENT 20 READ_END R2 ticket=4 r=1 w=0 t_ms=828 op=2 index=0 value=3 fib=2
+EVENT 21 READ_END R1 ticket=5 r=0 w=0 t_ms=848 op=2 index=3 value=13 fib=233
+EVENT 22 WRITE_BEGIN W1 ticket=6 r=0 w=1 t_ms=848 index=1 old=5
+EVENT 23 REQUEST R2 ticket=7 r=0 w=1 t_ms=909 index=2
+EVENT 24 REQUEST R1 ticket=8 r=0 w=1 t_ms=932 index=4
+EVENT 25 WRITE_END W1 ticket=6 r=0 w=0 t_ms=1062 op=2 index=1 old=5 new=8 db=[3,8,8,13,18]
+EVENT 26 READ_BEGIN R2 ticket=7 r=1 w=0 t_ms=1062 index=2 old=8
+EVENT 27 READ_BEGIN R1 ticket=8 r=2 w=0 t_ms=1062 index=4 old=18
+EVENT 28 OFFLINE W1 ticket=6 r=2 w=0 t_ms=1063 connection=closed
+EVENT 29 READ_END R1 ticket=8 r=1 w=0 t_ms=1312 op=3 index=4 value=18 fib=2584
+EVENT 30 OFFLINE R1 ticket=8 r=1 w=0 t_ms=1312 connection=closed
+EVENT 31 READ_END R2 ticket=7 r=0 w=0 t_ms=1323 op=3 index=2 value=8 fib=21
+EVENT 32 SUMMARY S0 ticket=0 r=0 w=0 t_ms=1323 reason=complete reads=6 writes=2 cancelled=0 peak_readers=2 db=[3,8,8,13,18]
+STOP complete

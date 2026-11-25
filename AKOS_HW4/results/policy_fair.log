@@ -1,0 +1,21 @@
+EVENT 1 INIT S0 ticket=0 r=0 w=0 t_ms=0 db=[2,3,5] policy=fair seed=42 readers=2 writers=2
+EVENT 2 ONLINE W1 ticket=0 r=0 w=0 t_ms=2 connection=open
+EVENT 3 REQUEST W1 ticket=1 r=0 w=0 t_ms=2 index=0
+EVENT 4 WRITE_BEGIN W1 ticket=1 r=0 w=1 t_ms=2 index=0 old=2
+EVENT 5 ONLINE R1 ticket=0 r=0 w=1 t_ms=2 connection=open
+EVENT 6 REQUEST R1 ticket=2 r=0 w=1 t_ms=3 index=0
+EVENT 7 ONLINE W2 ticket=0 r=0 w=1 t_ms=3 connection=open
+EVENT 8 REQUEST W2 ticket=3 r=0 w=1 t_ms=3 index=1
+EVENT 9 ONLINE R2 ticket=0 r=0 w=1 t_ms=3 connection=open
+EVENT 10 REQUEST R2 ticket=4 r=0 w=1 t_ms=3 index=2
+EVENT 11 WRITE_END W1 ticket=1 r=0 w=0 t_ms=3 op=1 index=0 old=2 new=9 db=[3,5,9]
+EVENT 12 READ_BEGIN R1 ticket=2 r=1 w=0 t_ms=3 index=0 old=3
+EVENT 13 OFFLINE W1 ticket=1 r=1 w=0 t_ms=3 connection=closed
+EVENT 14 READ_END R1 ticket=2 r=0 w=0 t_ms=3 op=1 index=0 value=3 fib=2
+EVENT 15 WRITE_BEGIN W2 ticket=3 r=0 w=1 t_ms=3 index=1 old=5
+EVENT 16 OFFLINE R1 ticket=2 r=0 w=1 t_ms=3 connection=closed
+EVENT 17 WRITE_END W2 ticket=3 r=0 w=0 t_ms=3 op=1 index=1 old=5 new=7 db=[3,7,9]
+EVENT 18 READ_BEGIN R2 ticket=4 r=1 w=0 t_ms=3 index=2 old=9
+EVENT 19 OFFLINE W2 ticket=3 r=1 w=0 t_ms=3 connection=closed
+EVENT 20 READ_END R2 ticket=4 r=0 w=0 t_ms=3 op=1 index=2 value=9 fib=34
+EVENT 21 SUMMARY S0 ticket=0 r=0 w=0 t_ms=3 reason=complete reads=2 writes=2 cancelled=0 peak_readers=1 db=[3,7,9]
