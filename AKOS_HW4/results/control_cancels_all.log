@@ -1,0 +1,16 @@
+EVENT 1 INIT S0 ticket=0 r=0 w=0 t_ms=0 db=[2,3,5] policy=fair seed=42 readers=2 writers=1
+EVENT 2 ONLINE M1 ticket=0 r=0 w=0 t_ms=2 connection=open
+EVENT 3 ONLINE R1 ticket=0 r=0 w=0 t_ms=3 connection=open
+EVENT 4 REQUEST R1 ticket=1 r=0 w=0 t_ms=3 index=2
+EVENT 5 READ_BEGIN R1 ticket=1 r=1 w=0 t_ms=3 index=2 old=5
+EVENT 6 ONLINE W1 ticket=0 r=1 w=0 t_ms=14 connection=open
+EVENT 7 REQUEST W1 ticket=2 r=1 w=0 t_ms=14 index=0
+EVENT 8 ONLINE R2 ticket=0 r=1 w=0 t_ms=25 connection=open
+EVENT 9 REQUEST R2 ticket=3 r=1 w=0 t_ms=25 index=1
+EVENT 10 ONLINE C0 ticket=0 r=1 w=0 t_ms=36 connection=open
+EVENT 11 OFFLINE C0 ticket=0 r=1 w=0 t_ms=36 connection=closed
+EVENT 12 ONLINE C0 ticket=0 r=1 w=0 t_ms=39 connection=open
+EVENT 13 CANCEL R1 ticket=1 r=0 w=0 t_ms=39 began=1 reason=control
+EVENT 14 CANCEL W1 ticket=2 r=0 w=0 t_ms=39 began=0 reason=control
+EVENT 15 CANCEL R2 ticket=3 r=0 w=0 t_ms=39 began=0 reason=control
+EVENT 16 SUMMARY S0 ticket=0 r=0 w=0 t_ms=39 reason=control reads=0 writes=0 cancelled=3 peak_readers=1 db=[2,3,5]

@@ -1,0 +1,14 @@
+READY 0 3 0 4 1 20 80 160 240 320 42
+REQUEST R1 op=1 index=4
+GRANT 2 13
+READ_BEGIN R1 ticket=2 index=4 old=13
+RESULT R1 op=1 index=4 value=13 fib=233
+REQUEST R1 op=2 index=3
+GRANT 5 13
+READ_BEGIN R1 ticket=5 index=3 old=13
+RESULT R1 op=2 index=3 value=13 fib=233
+REQUEST R1 op=3 index=4
+GRANT 8 18
+READ_BEGIN R1 ticket=8 index=4 old=18
+RESULT R1 op=3 index=4 value=18 fib=2584
+BYE quota

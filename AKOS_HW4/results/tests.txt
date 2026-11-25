@@ -1,0 +1,14 @@
+PASS clients_two_monitors
+PASS policy_fair
+PASS policy_readers
+PASS policy_writers
+PASS restart_after_kill_and_drop
+PASS framing_and_fib93
+PASS signal_cancels_all
+PASS control_cancels_all
+PASS reader_disconnect_and_resume
+PASS commit_before_lost_ack
+PASS seed_replay
+PASS invalid_configs
+PASS 18_processes_144_operations
+PASS 13/13

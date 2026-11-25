@@ -1,0 +1,28 @@
+EVENT 1 INIT S0 ticket=0 r=0 w=0 t_ms=0 db=[2,3,5] policy=fair seed=42 readers=0 writers=1
+EVENT 2 ONLINE M1 ticket=0 r=0 w=0 t_ms=1 connection=open
+EVENT 3 ONLINE W1 ticket=0 r=0 w=0 t_ms=12 connection=open
+EVENT 4 REQUEST W1 ticket=1 r=0 w=0 t_ms=12 index=0
+EVENT 5 WRITE_BEGIN W1 ticket=1 r=0 w=1 t_ms=12 index=0 old=2
+EVENT 6 WRITE_END W1 ticket=1 r=0 w=0 t_ms=463 op=1 index=0 old=2 new=31 db=[3,5,31]
+EVENT 7 REQUEST W1 ticket=2 r=0 w=0 t_ms=463 index=1
+EVENT 8 WRITE_BEGIN W1 ticket=2 r=0 w=1 t_ms=463 index=1 old=5
+EVENT 9 CANCEL W1 ticket=2 r=0 w=0 t_ms=474 began=1 reason=disconnect
+EVENT 10 OFFLINE W1 ticket=2 r=0 w=0 t_ms=474 connection=closed
+EVENT 11 ONLINE C0 ticket=0 r=0 w=0 t_ms=476 connection=open
+EVENT 12 OFFLINE C0 ticket=0 r=0 w=0 t_ms=476 connection=closed
+EVENT 13 ONLINE C0 ticket=0 r=0 w=0 t_ms=478 connection=open
+EVENT 14 OFFLINE M1 ticket=0 r=0 w=0 t_ms=478 connection=closed
+EVENT 15 OFFLINE C0 ticket=0 r=0 w=0 t_ms=479 connection=closed
+EVENT 16 ONLINE M2 ticket=0 r=0 w=0 t_ms=480 connection=open
+EVENT 17 ONLINE W1 ticket=0 r=0 w=0 t_ms=492 connection=open
+EVENT 18 REQUEST W1 ticket=3 r=0 w=0 t_ms=492 index=1
+EVENT 19 WRITE_BEGIN W1 ticket=3 r=0 w=1 t_ms=492 index=1 old=5
+EVENT 20 ONLINE C0 ticket=0 r=0 w=1 t_ms=502 connection=open
+EVENT 21 CANCEL W1 ticket=3 r=0 w=0 t_ms=503 began=1 reason=drop
+EVENT 22 OFFLINE W1 ticket=3 r=0 w=0 t_ms=503 connection=closed
+EVENT 23 OFFLINE C0 ticket=0 r=0 w=0 t_ms=503 connection=closed
+EVENT 24 ONLINE W1 ticket=0 r=0 w=0 t_ms=504 connection=open
+EVENT 25 REQUEST W1 ticket=4 r=0 w=0 t_ms=504 index=1
+EVENT 26 WRITE_BEGIN W1 ticket=4 r=0 w=1 t_ms=504 index=1 old=5
+EVENT 27 WRITE_END W1 ticket=4 r=0 w=0 t_ms=955 op=2 index=1 old=5 new=2 db=[2,3,31]
+EVENT 28 SUMMARY S0 ticket=0 r=0 w=0 t_ms=955 reason=complete reads=0 writes=2 cancelled=2 peak_readers=0 db=[2,3,31]

@@ -1,0 +1,10 @@
+READY 0 2 0 4 1 20 80 160 180 220 42
+REQUEST W1 op=1 index=0
+GRANT 3 2
+WRITE_BEGIN W1 ticket=3 index=0 old=2
+RESULT W1 op=1 index=0 old=2 new=18 db=[3,5,8,13,18]
+REQUEST W1 op=2 index=1
+GRANT 6 5
+WRITE_BEGIN W1 ticket=6 index=1 old=5
+RESULT W1 op=2 index=1 old=5 new=8 db=[3,8,8,13,18]
+BYE quota
